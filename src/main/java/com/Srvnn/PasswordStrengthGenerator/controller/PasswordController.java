@@ -20,6 +20,9 @@ public class PasswordController {
     @CrossOrigin(origins = "https://saravana601.github.io/passwordstrengthgenerator.github.io/") // Allow requests from any origin
     @PostMapping("/generate")
     public String checkPasswordStrength(@RequestBody Password password){
-        return passwordService.checkPasswordStrength(password);
+        logger.info("Received a request to check password strength with value: " + password.getPassword());
+        String result = passwordService.checkPasswordStrength(password);
+        logger.info("Result: " + result);
+        return result;
     }
 }
